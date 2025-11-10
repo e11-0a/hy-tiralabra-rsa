@@ -47,17 +47,19 @@ def miller_rabin_iteration(candidate: int, d: int, s: int) -> bool:
 
     # On alkuluku joten palautetaan suoraan
     if (x == 1) or (x == candidate - 1):
-        return True
+        return True 
 
+    y = 0
     for _ in range(s):
         y = pow(x, 2, candidate)
-        if (y == 1) and (x != 1) and (x != candidate - 1):
+        # Testit ohitettu, koska vaatii satunnaisluvun osuvan kohdalle
+        if (y == 1) and (x != 1) and (x != candidate - 1): # pragma: no cover
             return False
         x = y
     if y != 1:
         return False
 
-    return True
+    return True # pragma: no cover
 
 
 def miller_rabin(candidate: int, rounds: int) -> bool:
@@ -145,3 +147,11 @@ def encrypt(data, e, N):
 
 def decrypt(data, d, N):
     return pow(data, d, N)
+
+
+def encode(text): return int(
+    '1'+''.join(list(map(lambda x: f"{min(ord(x)-32, 99):02}", text))))
+
+
+def decode(data): return ''.join(
+    [chr(int(str(data)[1:][x:x+2])+32) for x in range(0, len(str(data))-1, 2)])

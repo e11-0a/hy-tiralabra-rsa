@@ -56,12 +56,6 @@ Varsinainen demo alkaa tästä. Ylempi lähinnä syötteenvalidointia ja tuloste
 input_text = sys.argv[2]
 
 
-def encode(text): return int(
-    '1'+''.join(list(map(lambda x: f"{min(ord(x)-32, 99):02}", text))))
-
-
-def decode(data): return ''.join(
-    [chr(int(str(data)[1:][x:x+2])+32) for x in range(0, len(str(data))-1, 2)])
 
 
 fprint(f"Generating two [GREEN]{bits}[ENDC]-bit primes:")
@@ -86,7 +80,7 @@ fprint(f"Private exponent (d):[GREEN] {d}[ENDC]\n")
 
 fprint(f"Encoding message to an integer:")
 
-encoded_text = encode(input_text)
+encoded_text = rsalib.encode(input_text)
 
 fprint(f"Original message    :[GREEN] {input_text}[ENDC]")
 fprint(f"Encoded message     :[GREEN] {encoded_text}[ENDC]\n")
@@ -105,7 +99,7 @@ fprint(f"Decrypted message   :[GREEN] {decrypted_message}[ENDC]\n")
 
 fprint("Decoding the message:")
 
-decoded_message = decode(decrypted_message)
+decoded_message = rsalib.decode(decrypted_message)
 
 fprint(f"Decoded message     :[GREEN] {decoded_message}[ENDC]\n")
 
