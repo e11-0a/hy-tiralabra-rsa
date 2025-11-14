@@ -22,9 +22,9 @@ class TestRSA(unittest.TestCase):
         p = rsalib.get_random_n_bit_prime(bits)
         q = rsalib.get_random_n_bit_prime(bits)
         keypair = rsalib.generate_keypair(p, q)
-        N = keypair[0][0]
-        e = keypair[0][1]
-        d = keypair[1][1]
+        N = keypair[0]
+        e = keypair[1]
+        d = keypair[2]
         encoded_text = rsalib.encode(input_text)
         encrypted_message = rsalib.encrypt(encoded_text, e, N)
         decrypted_message = rsalib.decrypt(encrypted_message, d, N)

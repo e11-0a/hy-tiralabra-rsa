@@ -98,7 +98,7 @@ def try_random_n_bit_prime(bits: int) -> int | None:
             return None
 
     # Suoritetaan Miller-Rabin kandidaattialkuluvulle
-    mres = miller_rabin(candidate, 5)
+    mres = miller_rabin(candidate, 40)
 
     if not mres:
         return None
@@ -114,7 +114,7 @@ def get_random_n_bit_prime(bits: int) -> int:
     return prime_res
 
 
-def generate_keypair(p: int, q: int) -> tuple[tuple[int, int], tuple[int, int]]:
+def generate_keypair(p: int, q: int) -> tuple[int, int, int]:
     """
     Tämä metodi luo RSA-avainparin kahdesta alkuluvusta
 
@@ -135,10 +135,10 @@ def generate_keypair(p: int, q: int) -> tuple[tuple[int, int], tuple[int, int]]:
     phi = (p - 1) * (q - 1)
     d = pow(e, -1, phi)
 
-    public_key = (N, e)
-    private_key = (N, d)
+    #public_key = (N, e)
+    #private_key = (N, d)
 
-    return public_key, private_key
+    return N, e, d
 
 
 def encrypt(data, e, N):
