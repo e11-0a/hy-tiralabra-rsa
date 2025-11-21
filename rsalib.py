@@ -83,10 +83,13 @@ def miller_rabin(candidate: int, rounds: int) -> bool:
     return True
 
 
-def try_random_n_bit_prime(bits: int) -> int | None:
+def try_random_n_bit_prime(bits: int, prime: int|None=None) -> int | None:
     """Varsinainen metodi jolla etsitään n-bittinen alkuluku"""
 
-    candidate = random_n_bit_int(bits)
+    if prime == None:
+        candidate = random_n_bit_int(bits)
+    else:
+        candidate = prime
 
     # Varmista että on pariton
     candidate += not candidate % 2
