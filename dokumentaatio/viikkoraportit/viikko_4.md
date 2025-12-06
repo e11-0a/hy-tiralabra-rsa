@@ -5,4 +5,4 @@ Lisätty testit jotka käyttävät openssl:llä generoituja suuria alkulukuja ja
 
 Päästä-päähän salaus mahdollisimman suurella syötteellä testi on myös toteutettu.
 
-Tutkin myös alkulukutarkistuksen vaiheiden (jakaminen pienillä alkuluvuilla ja Miller-Rabin) nopeuksia. Lisää tietoa erillisessä dokumentissa.
+Tutkin myös alkulukutarkistuksen vaiheiden (jakaminen pienillä alkuluvuilla ja Miller-Rabin) nopeuksia. [Lisää tietoa erillisessä dokumentissa](https://github.com/e11-0a/hy-tiralabra-rsa/blob/main/dokumentaatio/nopeustestaus.md).
