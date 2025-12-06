@@ -10,7 +10,7 @@ class TestRSA(unittest.TestCase):
         primetext = primefile.read()
         primefile.close()
         
-        self.openssl_primes = list(map(lambda x: int(x), filter(
+        self.external_primes = list(map(lambda x: int(x), filter(
             lambda x: len(x) > 0, primetext.split("\n"))))
         return super().setUp()
 
@@ -62,15 +62,15 @@ class TestRSA(unittest.TestCase):
 
     def test_large_composites(self):
         composites = []
-        for i in self.openssl_primes:
-            composites.append(i * random.choice(self.openssl_primes))
+        for i in self.external_primes:
+            composites.append(i * random.choice(self.external_primes))
 
         for i in composites:
             self.assertEqual(rsalib.try_random_n_bit_prime(0, i), None)
 
 
     def test_large_primes(self):
-        for i in self.openssl_primes:
+        for i in self.external_primes:
             self.assertEqual(rsalib.try_random_n_bit_prime(0, i), i)
         
 
