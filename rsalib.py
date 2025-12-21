@@ -37,7 +37,10 @@ primes: list[int] = eratostheneen_seula(10000)
 
 
 def miller_rabin_iteration(candidate: int, d: int, s: int) -> bool:
-    """Metodi toteuttaa iteraation Miller-Rabinin algoritmia. """
+    """
+    Metodi toteuttaa iteraation Miller-Rabinin algoritmia. 
+    https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
+    """
     # Arvotaan satunnaisluku
     a = random.randint(2, candidate - 2)
 
@@ -45,14 +48,15 @@ def miller_rabin_iteration(candidate: int, d: int, s: int) -> bool:
     # kandidaattiluvulla
     x = pow(a, d, candidate)
 
-    # On alkuluku joten palautetaan suoraan
+    # On todennäköinen alkuluku, joten palautetaan tosi
     if (x == 1) or (x == candidate - 1):
         return True 
 
     y = 0
     for _ in range(s):
         y = pow(x, 2, candidate)
-        # Testit ohitettu, koska vaatii satunnaisluvun osuvan kohdalle
+        
+        # Kattavuustestit ohitettu, koska vaatii satunnaisluvun osuvan kohdalle
         if (y == 1) and (x != 1) and (x != candidate - 1): # pragma: no cover
             return False
         x = y

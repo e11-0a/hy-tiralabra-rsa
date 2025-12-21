@@ -104,6 +104,8 @@ decoded_message = rsalib.decode(decrypted_message)
 fprint(f"Decoded message     :[GREEN] {decoded_message}[ENDC]\n")
 
 fprint(
-    f"The decrypted message matches the original: [BOLD]{["[FAIL]No[ENDC]", "[GREEN]Yes"][decrypted_message == encoded_text]}[ENDC]")
+    f"The input string is smaller than the modulo: [BOLD]{["[FAIL]No[ENDC]", "[GREEN]Yes"][encoded_text < N]}[ENDC]")
 fprint(
-    f"The decoded message matches the original  : [BOLD]{["[FAIL]No[ENDC]", "[GREEN]Yes"][decoded_message == input_text]}[ENDC]")
+    f"The decrypted message matches the original : [BOLD]{["[FAIL]No[ENDC]", "[GREEN]Yes"][decrypted_message == encoded_text]}[ENDC]")
+fprint(
+    f"The decoded message matches the original   : [BOLD]{["[FAIL]No[ENDC]", "[GREEN]Yes"][decoded_message == input_text]}[ENDC]")
